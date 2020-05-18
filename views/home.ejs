@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Kawaii Stationary Shop</title>
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        .containerModal {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 101;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 5% auto;
+            /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 25%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        .loginBtn {
+            background-color: #fff;
+            color: #51718c;
+            padding: 0px;
+            margin: 0px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!-- Main Header-->
+        <header class="main-header alternate">
+
+            <!-- Main Box -->
+            <div class="main-box">
+                <div class="auto-container">
+                    <div class="outer-container clearfix">
+                        <!--Logo Box-->
+                        <div class="logo-box">
+                            <div class="logo"><a href="index.html"><img src="images/logo.png" alt=""></a></div>
+                        </div>
+
+                        <!--Nav Outer-->
+                        <div class="nav-outer clearfix">
+                            <!-- Main Menu -->
+                            <nav class="main-menu">
+
+                                <div class="navbar-header">
+                                    <!-- Toggle Button -->
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                        data-target=".navbar-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+
+                                <div class="navbar-collapse collapse scroll-nav clearfix">
+                                    <ul class="navigation clearfix">
+                                        <li class="dropdown current"><a href="/">Home</a>
+                                        </li>
+                                        <li class="dropdown"><a href="/canvas">Canvas</a>
+                                        </li>
+                                        <li class="dropdown"><a href="/delivery">Delivery</a>
+                                        </li>
+                                        <!-- <li><a href="#recent">Recent</a></li> -->
+                                        <!-- <li><a href="#products">Products</a></li> -->
+                                        <!-- <li><a href="#testimonials">Testimonials</a></li> -->
+                                        <li><a href="/logout">
+                                                <button class="loginBtn"
+                                                    style="width:auto;">
+                                                    logout
+                                                </button>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </nav>
+                            <!-- Main Menu End-->
+
+                            <!--Other Links-->
+                            <!-- <div class="other-links">
+                            <a href="#" class="theme-btn btn-style-one">Free Trial</a>
+                        </div>
+                         -->
+                        </div>
+                        <!--Nav Outer End-->
+
+                    </div>
+                </div>
+            </div>
+
+        </header>
+        <!--End Main Header -->
+
+
+        <!--Main Banner / Banner Two-->
+        <section class="main-banner banner-two" id="banner" ">
+        <div class=" auto-container">
+            <div class="row clearfix">
+                <!--Text Column-->
+                <div class="text-column col-md-5 col-sm-12 col-xs-12">
+                    <div class="inner">
+                        <h4>One store. Start Collecting.</h4>
+                        <h2>Get your Stationary Collection</h2>
+                        <p>Always cute, always unique stationery and school supplies. We are a one stop stationery store
+                            bringing happiness worldwide.</p>
+                        <a href="https://www.youtube.com/watch?v=AHHelxfZwFE" class="theme-btn  lightbox-image"
+                            title="Image Caption Here">Watch Kawaii Collection Video <span
+                                class="icon ti-control-play"></span></a>
+                    </div>
+                </div>
+
+                <!--Image Column-->
+                <div class="image-column col-md-7 col-sm-12 col-xs-12">
+                    <div class="inner text-right">
+                        <figure class="image"><img src="images/resource/banner-image.jpg" alt=""></figure>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+    </section>
+    <!--End Main Banner-->
+
+
+
+    <!--Top Rated-->
+    <section class="blog-section" id='recent'>
+        <div class="auto-container">
+            <!--Heading-->
+            <div class="sec-title-two centered">
+                <h2>Highly Rated Products</h2>
+                <div class="desc-text">Get the latest kawaii stationary's <br>Improve your collection.</div>
+            </div>
+
+            <div class="row clearfix" id="products">
+                <script>
+                    let myFetch = fetch("http://localhost:5000/products");
+
+                    myFetch.then(function (response) {
+                        response.text().then(function (data) {
+                            var parsedJSON = JSON.parse(data);
+                            for (var i = 0; i < parsedJSON.length; i++) {
+                                console.log(parsedJSON[i].details.img);
+                                i++;
+                                document.getElementById("products").innerHTML += '<div class="news-style-one col-md-4 col-sm-6 col-xs-12">' +
+                                    '<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">' +
+                                    '<figure class="image-box"><a href="products.html"><img src="images/resource/' + parsedJSON[i].details.img + '" alt=""></a></figure>' +
+                                    '<div class="lower-content">' +
+                                    '<h3><a href="productDetails.html?id=' + parsedJSON[i].id + '">' + parsedJSON[i].details.name + '</a></h3>' +
+                                    '<div class="text">Cute Stitch Cartoon Animal Kawaii Spring Cable Protector Cover Saver Sleeves</div>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>'
+                            }
+                        });
+                    });
+
+                </script>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-section" id='products'>
+        <div class="auto-container">
+            <!--Heading-->
+            <div class="sec-title-two centered">
+                <div class="text-center wow tada" id="products" data-wow-delay="0ms" data-wow-duration="1500ms"><a
+                        href="products.html" class="theme-btn btn-style-seven">Explore More Products</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!--Testimonials Section Two-->
+    <section class="testimonials-two" id="testimonials">
+        <div class="auto-container">
+            <!--Heading-->
+            <div class="sec-title-two centered">
+                <h2>What customer say</h2>
+                <div class="desc-text">Grow your Collection. We couldn't put it better than our customers.</div>
+            </div>
+
+            <div class="testimonial-style-two owl-theme owl-carousel">
+                <!--Slide Item-->
+                <div class="slide-item">
+                    <div class="inner">
+                        <div class="quote-icon"></div>
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        <div class="quote-info">
+                            <figure class="thumb img-circle"><img class="img-circle"
+                                    src="images/resource/author-thumb-1.jpg" alt=""></figure>
+                            <h4>Morvi</h4>
+                            <div class="designation">1st Grade</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Slide Item-->
+                <div class="slide-item">
+                    <div class="inner">
+                        <div class="quote-icon"></div>
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        <div class="quote-info">
+                            <figure class="thumb img-circle"><img class="img-circle"
+                                    src="images/resource/author-thumb-1.jpg" alt=""></figure>
+                            <h4>Morvi</h4>
+                            <div class="designation">1st Grade</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Slide Item-->
+                <div class="slide-item">
+                    <div class="inner">
+                        <div class="quote-icon"></div>
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        <div class="quote-info">
+                            <figure class="thumb img-circle"><img class="img-circle"
+                                    src="images/resource/author-thumb-1.jpg" alt=""></figure>
+                            <h4>Morvi</h4>
+                            <div class="designation">1st Grade</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Slide Item-->
+                <div class="slide-item">
+                    <div class="inner">
+                        <div class="quote-icon"></div>
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        <div class="quote-info">
+                            <figure class="thumb img-circle"><img class="img-circle"
+                                    src="images/resource/author-thumb-1.jpg" alt=""></figure>
+                            <h4>Morvi</h4>
+                            <div class="designation">1st Grade</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Slide Item-->
+                <div class="slide-item">
+                    <div class="inner">
+                        <div class="quote-icon"></div>
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        <div class="quote-info">
+                            <figure class="thumb img-circle"><img class="img-circle"
+                                    src="images/resource/author-thumb-1.jpg" alt=""></figure>
+                            <h4>Morvi</h4>
+                            <div class="designation">1st Grade</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Slide Item-->
+                <div class="slide-item">
+                    <div class="inner">
+                        <div class="quote-icon"></div>
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        <div class="quote-info">
+                            <figure class="thumb img-circle"><img class="img-circle"
+                                    src="images/resource/author-thumb-1.jpg" alt=""></figure>
+                            <h4>Morvi</h4>
+                            <div class="designation">1st Grade</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Slide Item-->
+                <div class="slide-item">
+                    <div class="inner">
+                        <div class="quote-icon"></div>
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        <div class="quote-info">
+                            <figure class="thumb img-circle"><img class="img-circle"
+                                    src="images/resource/author-thumb-1.jpg" alt=""></figure>
+                            <h4>Morvi</h4>
+                            <div class="designation">1st Grade</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Slide Item-->
+                <div class="slide-item">
+                    <div class="inner">
+                        <div class="quote-icon"></div>
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        <div class="quote-info">
+                            <figure class="thumb img-circle"><img class="img-circle"
+                                    src="images/resource/author-thumb-1.jpg" alt=""></figure>
+                            <h4>Morvi</h4>
+                            <div class="designation">1st Grade</div>
+                        </div>
+                    </div>
+                </div>
+                <!--Slide Item-->
+                <div class="slide-item">
+                    <div class="inner">
+                        <div class="quote-icon"></div>
+                        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                        <div class="quote-info">
+                            <figure class="thumb img-circle"><img class="img-circle"
+                                    src="images/resource/author-thumb-1.jpg" alt=""></figure>
+                            <h4>Morvi Padshala</h4>
+                            <div class="designation">1st Grade</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer Style Two-->
+    <footer class="footer-style-two">
+        <!--Footer Upper-->
+        <div class="footer-upper">
+            <div class="auto-container">
+                <div class="outer-box">
+                    <div class="row clearfix">
+
+
+
+                        <!--Big Column-->
+                        <div class="big-column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row clearfix">
+
+                                <!--Footer Column-->
+                                <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                                    <div class="footer-widget newsletter-widget">
+                                        <div class="widget-inner">
+
+                                            <div class="logo"><img src="images/footer-logo.png" alt=""></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Footer Column-->
+                                <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                                    <div class="footer-widget newsletter-widget">
+                                        <div class="widget-inner">
+                                            <div class="copyright">Copyright &copy; 2020, Kawaii Stationary Shop</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+    </div>
+    <!--End pagewrapper-->
+
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-double-up"></span></div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/pagenav.js"></script>
+    <script src="js/jquery.scrollTo.js"></script>
+    <script src="js/jquery.fancybox.pack.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

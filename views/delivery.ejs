@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kawaii Stationary Shop</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(12,1fr);
+        grid-gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+    }
+    .one {
+        grid-row:1;
+        grid-column-start: 2;
+        grid-column-end: 12;
+    }
+    .two { 
+        display: block;
+        margin: auto;
+        grid-column-start: 2;
+        grid-column-end: 6;
+        grid-row:3;
+    }
+    .three{
+        grid-column-start: 8;
+        grid-column-end: 9;
+        grid-row:3;
+    }
+    .four{
+        grid-column-start: 10;
+        grid-column-end: 12;
+        grid-row:3;
+        height: 500px;
+    }
+    .vl {
+        border-left: 2px solid black;
+        grid-column-start: 7;
+        grid-row: 3;
+        height: 500px;
+
+    }
+    .resize{
+        grid-row: 2;
+        grid-column-start: 2;
+        grid-column-end: 12;
+        text-align: center;
+    }
+    .button1 {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        grid-row: 4;
+        height: 10px;;
+        grid-column-start: 2;
+    }
+    .button2 {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        grid-row: 4;
+        height: 10px;;
+        grid-column-start: 11;
+    }
+    .defaultTextBox {
+        height: 20px;
+        position: relative;
+        border: 2px solid #cdcdcd;
+        border-color: rgba(0, 0, 0, .14);
+        background-color: AliceBlue;
+        font-size: 14px;
+    }
+    #draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 150px 10px 150px 0; border-style: solid; background-color: gray;border: black 1px;}
+    #droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 150px 100px 150px 100px;}
+</style>
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  $( function() {
+    $("#tabs").tabs();
+  } );
+  $( function() {
+    $( ".draggable" ).draggable();
+    $( "#droppable" ).droppable({
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Dropped!" );
+      }
+    });
+  } );
+  $( function() {
+    $( "#resizable" ).resizable();
+  } );
+  </script>
+</head>
+<body>
+
+    <div class="logo-box">
+        <div class="logo"><a href="index.html"><img src="images/logo.png" alt=""></a></div>
+    </div>
+    <div class="wrapper">
+        <div id="tabs" class="one">
+            <ul>
+                <li><a href="/oneDay.ejs">One Day Delivery</a></li>
+                <li><a href="/twoDay.ejs">Two Day Delivery</a></li>
+                <li><a href="/freeDelivery.ejs">Free Delivery</a></li>
+            </ul>
+        </div>
+        <div class="resize">
+            <h3 id="resizable" class="ui-widget-header">
+                Choose a delivery date as per your convinence or drag and drop the delivery options.
+            </h3>
+        </div>
+        <div class="two">Delivery Date: <input type="text" class="defaultTextBox" id="datepicker"></div>
+        <div class="three">
+            <div class="draggable" class="ui-widget-content">
+                <p>One Day Delivery</p>
+            </div>
+            <div class="draggable" class="ui-widget-content">
+                <p>Two Day Delivery</p>
+            </div>
+            <div class="draggable" class="ui-widget-content">
+                <p>Free Delivery</p>
+            </div>
+        </div>
+        <div class="vl"></div>
+        <div class="four">
+            <div id="droppable" class="ui-widget-header">
+                <p>Drag and drop your preferred delivery method.</p>
+            </div>
+        </div>
+        <a href="/" class="button1">Back</a>
+        <a href="/" class="button2">Submit</a>
+    </div>
+    
+ 
+</body>
+</html>
